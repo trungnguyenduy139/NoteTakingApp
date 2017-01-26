@@ -98,9 +98,7 @@ public class EditorActivity extends AppCompatActivity {
                     count++;
                 }
             }
-        if (noteArr.length == 0)
-            return true;
-        else if (count == noteText.length())
+        if (count == noteText.length() || noteArr.length == 0)
             return true;
         else
             return false;
