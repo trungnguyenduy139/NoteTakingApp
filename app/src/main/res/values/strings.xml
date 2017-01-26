@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">My Note Taking App</string>
+    <string name="action_create_new">Create New Note</string>
+    <string name="action_delete_all">Delete All Note</string>
+    <string name="are_you_sure">Are you sure to delete All your note???</string>
+    <string name="all_deleted">All Note Deleted</string>
+    <string name="note">Note</string>
+    <string name="enter_note_here">Enter Note Here</string>
+    <string name="new_note">Create New Note</string>
+    <string name="edit_note">Edit Note</string>
+    <string name="action_delete_one">Delete</string>
+</resources>
