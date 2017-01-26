@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,8 +18,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class EditorActivity extends AppCompatActivity {
-    public static final String NOTE_TEXT = "note_text";
-    public static final int RESULT_CODE = 1;
     private EditText etNote;
     private String noteFilter;
     private String oldText;
@@ -110,6 +107,8 @@ public class EditorActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.editor_menu, menu);
+        if (requestCodeTag == MainActivity.REQUEST_CODE_ADD_NEW)
+            menu.findItem(R.id.action_delete_one).setVisible(false);
         return true;
     }
 
