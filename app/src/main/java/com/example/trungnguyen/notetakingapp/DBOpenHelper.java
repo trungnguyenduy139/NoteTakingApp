@@ -15,7 +15,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     //Constants for identifying table and columns
     public static final String TABLE_NOTES = "notes";
-    public static final String NOTE_DATE = "noteDate";
     public static final String NOTE_ID = "_id";
     public static final String NOTE_TEXT = "noteText";
     public static final String NOTE_CREATED = "noteCreated";

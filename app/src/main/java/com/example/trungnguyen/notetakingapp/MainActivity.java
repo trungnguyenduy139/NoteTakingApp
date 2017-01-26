@@ -21,7 +21,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements
@@ -89,8 +88,6 @@ public class MainActivity extends AppCompatActivity implements
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_create_new:
-//                insertNote("New Noteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-                ;
                 Intent intentAddNew = new Intent(MainActivity.this, EditorActivity.class);
                 intentAddNew.putExtra(REQUEST_CODE_TAG, REQUEST_CODE_ADD_NEW);
                 startActivityForResult(intentAddNew, REQUEST_CODE_ADD_NEW);

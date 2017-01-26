@@ -41,7 +41,10 @@ public class EditorActivity extends AppCompatActivity {
             oldText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.NOTE_TEXT));
             etNote.setText(oldText);
             etNote.requestFocus();
-        } else etNote.setText("");
+        } else {
+            setTitle(getString(R.string.new_note));
+            etNote.setText("");
+        }
     }
 
     private void updateNote(String newNote) {
