@@ -57,10 +57,10 @@ public class EditorActivity extends AppCompatActivity {
     private void insertNote(String noteText) {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.NOTE_TEXT, noteText);
-        SimpleDateFormat formater = new SimpleDateFormat("MM-dd-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
         Date date = new Date();
         date.parse(Calendar.getInstance().getTime().toString());
-        values.put(DBOpenHelper.NOTE_CREATED, formater.format(date));
+        values.put(DBOpenHelper.NOTE_CREATED, formatter.format(date));
         Uri notesUri = getContentResolver().insert(NotesProvider.CONTENT_URI, values);
         Log.d("MainActivity", "Insert Note " + notesUri.getLastPathSegment());
     }
@@ -74,15 +74,36 @@ public class EditorActivity extends AppCompatActivity {
         String noteText = etNote.getText().toString();
         switch (requestCodeTag) {
             case MainActivity.REQUEST_CODE_ADD_NEW:
-                insertNote(noteText);
+                if (!isNoteTextEmpty(noteText))
+                    insertNote(noteText);
                 break;
             case MainActivity.REQUEST_CODE_EDIT:
-                updateNote(noteText);
+                if (!oldText.equals(noteText) && !isNoteTextEmpty(noteText))
+                    updateNote(noteText);
+                else if (isNoteTextEmpty(noteText))
+                    deleteNote();
                 break;
             case -1:
                 break;
         }
         super.onBackPressed();
+    }
+
+    private boolean isNoteTextEmpty(String noteText) {
+        char[] noteArr = noteText.toCharArray();
+        int count = 0;
+        if (noteArr.length > 0)
+            for (char i : noteArr) {
+                if (i == ' ') {
+                    count++;
+                }
+            }
+        if (noteArr.length == 0)
+            return true;
+        else if (count == noteText.length())
+            return true;
+        else
+            return false;
     }
 
     @Override
@@ -105,6 +126,4 @@ public class EditorActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }
