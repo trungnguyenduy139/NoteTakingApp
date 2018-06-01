@@ -28,7 +28,7 @@ public class EditorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
         Intent intent = getIntent();
-        etNote = (EditText) findViewById(R.id.etNote);
+        etNote = findViewById(R.id.etNote);
         requestCodeTag = intent.getIntExtra(MainActivity.REQUEST_CODE_TAG, -1);
         if (requestCodeTag == MainActivity.REQUEST_CODE_EDIT && requestCodeTag != -1) {
             setTitle(getString(R.string.edit_note));
@@ -59,7 +59,7 @@ public class EditorActivity extends AppCompatActivity {
         values.put(DBOpenHelper.NOTE_TEXT, noteText);
         SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
         Date date = new Date();
-        date.parse(Calendar.getInstance().getTime().toString());
+        Date.parse(Calendar.getInstance().getTime().toString());
         values.put(DBOpenHelper.NOTE_CREATED, formatter.format(date));
         Uri notesUri = getContentResolver().insert(NotesProvider.CONTENT_URI, values);
         Log.d("MainActivity", "Insert Note " + notesUri.getLastPathSegment());
@@ -98,10 +98,7 @@ public class EditorActivity extends AppCompatActivity {
                     count++;
                 }
             }
-        if (count == noteText.length() || noteArr.length == 0)
-            return true;
-        else
-            return false;
+        return count == noteText.length() || noteArr.length == 0;
     }
 
     @Override

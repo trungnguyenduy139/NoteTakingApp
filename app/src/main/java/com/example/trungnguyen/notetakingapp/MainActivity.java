@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lvNote = (ListView) findViewById(R.id.lvNote);
+        lvNote = findViewById(R.id.lvNote);
 //        insertNote("New note");
 
 //        Cursor cursor = getContentResolver().query(NotesProvider.CONTENT_URI, DBOpenHelper.ALL_COLUMNS,

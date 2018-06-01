@@ -12,6 +12,7 @@ import android.widget.TextView;
  * Created by Trung Nguyen on 1/24/2017.
  */
 public class NotesCursorAdapter extends CursorAdapter {
+
     public NotesCursorAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
     }
@@ -28,13 +29,13 @@ public class NotesCursorAdapter extends CursorAdapter {
                 cursor.getColumnIndex(DBOpenHelper.NOTE_TEXT));
         String noteCreated = cursor.getString(
                 cursor.getColumnIndex(DBOpenHelper.NOTE_CREATED));
-        int pos = noteText.indexOf(10);
-        if (pos != -1) {
+        int pos = noteText.length() > 18 ? 18 : noteText.length();
+        if (pos > 0) {
             noteText = noteText.substring(0, pos) + " ...";
         }
 
-        TextView tvNote = (TextView) view.findViewById(R.id.tvNote);
-        TextView tvCreated = (TextView) view.findViewById(R.id.tvCreated);
+        TextView tvNote = view.findViewById(R.id.tvNote);
+        TextView tvCreated = view.findViewById(R.id.tvCreated);
         tvNote.setText(noteText);
         tvCreated.setText(noteCreated);
     }

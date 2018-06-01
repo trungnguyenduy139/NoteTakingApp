@@ -19,7 +19,7 @@
         <provider
             android:name=".NotesProvider"
             android:authorities="com.example.trungnguyen.notetakingapp.notesprovider"
-            android:exported="false"></provider>
+            android:exported="false" />
 
         <activity android:name=".EditorActivity"></activity>
     </application>
