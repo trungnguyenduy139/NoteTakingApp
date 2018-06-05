@@ -6,6 +6,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 /**
@@ -42,31 +43,31 @@ public class NotesProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public Cursor query(Uri uri, String[] strings, String selection, String[] strings1, String s1) {
+    public Cursor query(@NonNull Uri uri, String[] strings, String selection, String[] strings1, String s1) {
         return database.query(DBOpenHelper.TABLE_NOTES, DBOpenHelper.ALL_COLUMNS, selection,
                 null, null, null, DBOpenHelper.NOTE_CREATED + " DESC");
     }
 
     @Nullable
     @Override
-    public String getType(Uri uri) {
+    public String getType(@NonNull Uri uri) {
         return null;
     }
 
     @Nullable
     @Override
-    public Uri insert(Uri uri, ContentValues contentValues) {
+    public Uri insert(@NonNull Uri uri, ContentValues contentValues) {
         long id = database.insert(DBOpenHelper.TABLE_NOTES, null, contentValues);
         return Uri.parse(BASE_PATH + "/" + id);
     }
 
     @Override
-    public int delete(Uri uri, String s, String[] strings) {
+    public int delete(@NonNull Uri uri, String s, String[] strings) {
         return database.delete(DBOpenHelper.TABLE_NOTES, s, strings);
     }
 
     @Override
-    public int update(Uri uri, ContentValues contentValues, String selection, String[] strings) {
+    public int update(@NonNull Uri uri, ContentValues contentValues, String selection, String[] strings) {
         return database.update(DBOpenHelper.TABLE_NOTES,contentValues, selection, strings);
     }
 }

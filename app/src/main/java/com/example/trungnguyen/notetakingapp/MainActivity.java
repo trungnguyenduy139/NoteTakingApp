@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements
 //    public static final String REQUEST_CODE_TAG_2 = "request_code_tag_2";
 //    private static final String NOTE_TEXT = "note_text";
 
+    public static final int REQUEST_CODE_SETTING = 555;
+
     ListView lvNote;
     CursorAdapter cursorAdapter;
 
@@ -95,10 +97,16 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.action_deleteAll:
                 deleteAllNote();
                 break;
+            case R.id.action_settings:
+                startActivityForResult(new Intent(MainActivity.this, SettingsActivity.class), REQUEST_CODE_SETTING);
+                break;
+            default:
+                break;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     private void deleteAllNote() {
         DialogInterface.OnClickListener dialog = new DialogInterface.OnClickListener() {
@@ -156,6 +164,12 @@ public class MainActivity extends AppCompatActivity implements
 //                    restartLoader();
 //                    break;
 //            }
-        restartLoader();
+        if (requestCode == REQUEST_CODE_SETTING) {
+            if (resultCode == RESULT_OK) {
+                recreate();
+                return;
+            }
+        } else
+            restartLoader();
     }
 }

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">My Note Taking App</string>
     <string name="action_create_new">Create New Note</string>
+    <string name="action_settings">Settings</string>
     <string name="action_delete_all">Delete All Note</string>
     <string name="are_you_sure">Are you sure to delete All your note???</string>
     <string name="all_deleted">All Note Deleted</string>

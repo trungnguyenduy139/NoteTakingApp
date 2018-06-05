@@ -21,7 +21,8 @@
             android:authorities="com.example.trungnguyen.notetakingapp.notesprovider"
             android:exported="false" />
 
-        <activity android:name=".EditorActivity"></activity>
+        <activity android:name=".EditorActivity" />
+        <activity android:name=".SettingsActivity" />
     </application>
 
 </manifest>
