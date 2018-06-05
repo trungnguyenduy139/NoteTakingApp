@@ -14,6 +14,7 @@ import android.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        boolean isNightMode = PreferencesHelper.getBoolPreferences(this, PreferencesHelper.KEY_NIGHT_MODE, false);
+        int mode = isNightMode ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO;
+        AppCompatDelegate.setDefaultNightMode(mode);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lvNote = findViewById(R.id.lvNote);
