@@ -13,7 +13,6 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         SwitchCompat swNightMode = findViewById(R.id.sw_night_mode);
         boolean isNightMode = PreferencesHelper.getBoolPreferences(this, PreferencesHelper.KEY_NIGHT_MODE, false);
         swNightMode.setChecked(isNightMode);
@@ -31,8 +30,22 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+
     public void restartApp() {
-        startActivity(new Intent(this, SettingsActivity.class));
         finish();
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+        startActivity(new Intent(this, SettingsActivity.class));
+
+//        recreate();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 }
