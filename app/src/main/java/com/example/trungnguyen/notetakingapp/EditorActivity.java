@@ -33,7 +33,7 @@ public class EditorActivity extends AppCompatActivity {
         if (requestCodeTag == MainActivity.REQUEST_CODE_EDIT && requestCodeTag != -1) {
             setTitle(getString(R.string.edit_note));
             Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
-            noteFilter = DBOpenHelper.NOTE_ID + "=" + uri.getLastPathSegment();
+            noteFilter = uri.getLastPathSegment();
 
             Cursor cursor = getContentResolver().query(uri,
                     DBOpenHelper.ALL_COLUMNS, noteFilter, null, null);
@@ -41,6 +41,7 @@ public class EditorActivity extends AppCompatActivity {
             oldText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.NOTE_TEXT));
             etNote.setText(oldText);
             etNote.requestFocus();
+            cursor.close();
         } else {
             setTitle(getString(R.string.new_note));
             etNote.setText("");
