@@ -96,7 +96,7 @@ public class NotesProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, ContentValues contentValues, String selection, String[] strings) {
         String newNote = (String) contentValues.get(DBOpenHelper.NOTE_TEXT);
-        Note note = mNoteDao.queryBuilder().where(NoteDao.Properties.Mid.eq(selection)).uniqueOrThrow();
+        Note note = mNoteDao.queryBuilder().where(NoteDao.Properties.Mid.eq(selection)).unique();
         note.setMNoteText(newNote);
         mNoteDao.update(note);
         return 1;
